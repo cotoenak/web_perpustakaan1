@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 @section('title', 'Beranda')
 
 @section('content')
@@ -16,14 +18,14 @@
         <p>{{$books->total()}} buku tersedia di Perpustakaan</p>
     </div>
     @auth
-        <a href="#" class="btn btn-primary">+ Tambah Buku</a>
+        <a href="{{ route ('my-books.create') }}" class="btn btn-primary">+ Tambah Buku</a>
     @endauth
 </div>
 
 <div class="books-grid">
     @foreach ($books as $book)
         <div class="book-card">
-            <a href="{{ route('books.show') }}"class="book-link">
+            <a href="{{ route('books.show', $book) }}"class="book-link">
                 @if ($book->cover_image)
                     <img src=" {{ storage::url($book->cover_image) }}" alt="{{ $book->title }}" class="book-cover">
                 @else

@@ -44,7 +44,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function regiter(Request $request)
+    public function register(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:225'],
